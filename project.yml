@@ -1,0 +1,25 @@
+name: BaseGalleryProject
+attributes:
+  ORGANIZATIONNAME: webant.com
+
+configs:
+  Debug: debug
+  Release: release
+
+fileGroups:
+    - README.md
+    - Podfile
+    - project.yml
+
+configFiles:
+  Debug: Config/Project-Debug.xcconfig
+  Release: Config/Project-Release.xcconfig
+
+options:
+  defaultConfig: Debug
+  groupSortPosition: top
+  createIntermediateGroups: true
+  useBaseInternationalization: true
+
+include:
+  - path: BaseGalleryProject/target.yml

@@ -1,0 +1,17 @@
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Config/AppIdentifiers.xcconfig"
+
+PRODUCT_NAME = BaseGalleryProject
+
+// Version
+MARKETING_VERSION = 0.0.1
+CURRENT_PROJECT_VERSION = 20210629215445
+
+INFOPLIST_FILE = BaseGalleryProject/SupportingFiles/Info.plist
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
+
+CODE_SIGN_ENTITLEMENTS = BaseGalleryProject/SupportingFiles/BaseGalleryProject.entitlements

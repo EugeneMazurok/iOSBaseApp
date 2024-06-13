@@ -1,0 +1,56 @@
+name: BaseGalleryProject
+
+schemes:
+  BaseGalleryProject:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        BaseGalleryProject:
+        - running
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+      commandLineArguments:
+        "IS_NETWORK_LOGGING_ENABLED": true
+targets:
+  BaseGalleryProject:
+    type: application
+    platform: iOS
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    settings:
+
+    preBuildScripts:
+    - name: ⚠️ SwiftLint
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: |
+            if which swiftlint >/dev/null; then
+                swiftlint
+            else
+                echo "error: SwiftLint does not exist, install it by 'brew install swiftlint'. More: https://github.com/realm/SwiftLint"
+                exit 1
+            fi
+    - name: 🛠 R.Swift
+      basedOnDependencyAnalysis: false
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: |
+            "$PODS_ROOT/R.swift/rswift" generate "$SRCROOT/BaseGalleryProject/R.generated.swift"
+      outputFiles:
+      - $SRCROOT/BaseGalleryProject/R.generated.swift
+
+    sources:
+    - path: ../Config
+    - path: .

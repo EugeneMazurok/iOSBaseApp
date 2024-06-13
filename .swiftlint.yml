@@ -1,0 +1,4 @@
+parent_config: build-scripts/linter/.swiftlint.yml
+
+disabled_rules:
+  - function_parameter_count

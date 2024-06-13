@@ -1,0 +1,67 @@
+import "../build-scripts/fastlane/commonFastfile"
+
+#---------------------------
+# Uploading to AppStore Connect 
+#---------------------------
+
+# Release build
+lane :release do
+  release_common
+end
+
+# Debug build
+lane :beta_testflight do
+  beta_testflight_common
+end
+
+#---------------------------
+# Uploading to App Center
+#---------------------------
+
+# Release build
+lane :beta_release do
+  beta_release_common
+end
+
+# Debug build
+lane :beta do
+  beta_common
+end
+
+# Debug build
+lane :beta_customers do
+  beta_customers_common
+end
+
+# ---------------------------
+# Update signings info.
+# ---------------------------
+
+# Get signing stuff only from Git.
+lane :sync do |options|
+  sync_common
+end
+
+# Get signing stuff from Git and update via Developer Portal.
+lane :sync_force do |options|
+  sync_force_common
+end
+
+# Get signing stuff from Git and update via Developer Portal. Create certificates if need.
+lane :sync_force_certs do |options|
+  sync_force_certs_common
+end
+
+# ---------------------------
+# CI
+# ---------------------------
+
+# Building in 'Debug' on CI stage
+lane :ci_debug_build do |options|
+  ci_build_common(isRelease: false)
+end
+
+# Building in 'Release' configuration on CI stage
+lane :ci_release_build do |options|
+  ci_build_common(isRelease: true)
+end

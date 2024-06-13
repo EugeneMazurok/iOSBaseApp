@@ -1,0 +1,18 @@
+require 'yaml'
+require 'ostruct'
+
+project_settings = OpenStruct.new(YAML.load(open("#{Dir.pwd}/fastlane/project_settings.yml")))
+team_confidential = OpenStruct.new(YAML.load(open("#{Dir.pwd}/fastlane/team-confidential/team_confidential.yml")))
+
+
+git_url(team_confidential[:apple_certificates_git])
+
+storage_mode("git")
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+username(project_settings[:apple_user]) # Your Apple Developer Portal username
+git_branch(project_settings[:certificates_git_branch])
+app_identifier(project_settings[:app_bundle_id])
+team_id(project_settings[:team_id])
+shallow_clone true # Because I don't need the whole git history of the certs
+force_for_new_devices true # If someone adds a device I want to make sure they can test the app
+#verbose true # Print out extra information and all commands

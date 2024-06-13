@@ -1,0 +1,5 @@
+[submodule "build-scripts"]
+	path = build-scripts
+	url = git@gitlab.webant.ru:ios/buildscripts-ios.git
+	branch = master
+	active = false

@@ -1,0 +1,12 @@
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Config/AppIdentifiers.xcconfig"
+#include "Common.xcconfig"
+#include "Pods/Target Support Files/Pods-BaseGalleryProject/Pods-BaseGalleryProject.debug.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_IDENTIFIER_DEV)
+
+// Provisioning profiles
+PROVISIONING_PROFILE_SPECIFIER = $(DEV_PROVISIONING_PROFILE_SPECIFIER)
+PROVISIONING_PROFILE = $(DEV_PROVISIONING_PROFILE)

@@ -1,0 +1,21 @@
+# Project Constants:
+
+app_bundle_id: "com.baseapp"
+
+# Какая схема приложения будет использоваться для создания Beta и Release сборок приложения.
+scheme: "BaseApp"
+
+# В какую ветку будет залита версия после команды fastlane beta
+beta_branch: "beta"
+
+# В какую ветку будет залита версия после команды fastlane release
+release_branch: "main"
+
+# В какую команду тестирования будут отправляться сборки для внутреннего тестирования.
+appcenter_inner_group: "Collaborators"
+
+# В какую команду тестирования будут отправляться сборки для тестирования заказчиком.
+appcenter_customer_group: "BaseApp-public"
+
+# Путь к файлу настройки проекта.
+plist_path: "BaseGalleryProject/SupportingFiles/Info.plist"

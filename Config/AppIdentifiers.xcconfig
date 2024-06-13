@@ -1,0 +1,18 @@
+// MARK: - App identity
+BUNDLE_DISPLAY_NAME = BaseGalleryProject
+
+// < DON'T TOUCH IT! >
+BASE_BUNDLE_IDENTIFIER = com.baseapp
+BASE_BUNDLE_IDENTIFIER_DEV = com.baseapp
+APPLICATION_SCHEME = basegalleryproject
+// < /DON'T TOUCH IT! >
+
+// MARK: - Provisioning profiles
+// SPECIFIER => Name of the profile like 'match Development com.webant.baseapp'
+// PROFILE => Profile UUID from fastlane output
+// or filename from /Library/MobileDevice/Provisioning/[thisName].mobileprovision
+DEV_PROVISIONING_PROFILE_SPECIFIER = match Development com.baseapp
+DEV_PROVISIONING_PROFILE = 4c9f7210-dac0-44a7-8914-646ff0ec5d68
+
+RELEASE_PROVISIONING_PROFILE_SPECIFIER = match AppStore com.baseapp
+RELEASE_PROVISIONING_PROFILE = f13d94d0-33fa-43b5-95e2-8fa7116ad387
