@@ -27,3 +27,26 @@
 
 # Важно
 - Для разрабов с машинами на Apple Silicon и юзающих ```brew``` добавить строку в SwiftLint Build Phase: ```export PATH="$PATH:/opt/homebrew/bin"```. Также там же очевидно поменять дефолтный shell на свой.
+- Для них же, я изменил ```post_install``` в ```podfile```, однако, если у вас вознкиают какие-то ошибки, можно попробовать вернуть оригинальный ```post_install```:
+````
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+        config.build_settings['ARCHS[sdk=iphonesimulator*]'] =  `uname -m`
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+        config.build_settings['LD_NO_PIE'] = 'NO'
+        config.build_settings.delete('CODE_SIGNING_ALLOWED')
+        config.build_settings.delete('CODE_SIGNING_REQUIRED')
+        if config.name == 'Debug'
+          config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-Onone']
+          config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+          config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = [
+                '$(FRAMEWORK_SEARCH_PATHS)'
+              ]
+        end
+      end
+    end
+  end
+````
+
